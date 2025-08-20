@@ -22,13 +22,6 @@ def sym_search(company: str) -> pd.DataFrame:
     return search
 
 
-# # Get daily data
-# @st.cache_data(ttl=3600, hash_funcs={pd.DataFrame: lambda x: None})
-# def daily_data(symbol: str) -> pd.DataFrame:
-#     df = client.get_daily_data(symbol)
-#     return daily_data
-
-
 # Add title on the page
 st.title("Stock Market API project")
 
@@ -54,7 +47,6 @@ if company:
 
     # If button is pressed plot the results
     if button:
-        print(selected_symbol)
         df = client.get_daily_data(selected_symbol)
         fig = client.plot_chart(df)
         st.plotly_chart(fig)
